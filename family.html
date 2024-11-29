@@ -1,0 +1,377 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <style>
+        /* Reset and basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Arial', sans-serif;
+    background: #121212; /* Dark background */
+    color: #dcdcdc; /* Light text color */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    animation: fadeIn 1s ease;
+}
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+       header {
+    background: linear-gradient(135deg, #3a6a47, #4d3d29); /* Green and soft brown */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+
+        header h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+               /* Navigation */
+        nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px;
+    background-color: #1e1e1e;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+    color: #dcdcdc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+
+        nav ul li a:hover {
+            color: #00ff99;
+            transform: scale(1.1);
+        }
+
+        /* Family Tree Container */
+        .family-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        /* Large Family Picture */
+        .family-picture {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .family-picture img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Parent Nodes */
+        .parent-node {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-bottom: 40px;
+        }
+
+        .tree-node {
+            width: 180px;
+            height: 230px;
+            background: #009B77;
+            border-radius: 15px;
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            margin: 10px;
+        }
+
+        .tree-node:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(57, 255, 20, 0.8);
+        }
+
+        .tree-node p {
+            font-size: 1.2rem;
+            color: # 006400;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .role {
+            font-size: 1rem;
+            color: #FFD700;
+            margin-top: 5px;
+        }
+
+        /* Sibling Nodes */
+        .siblings {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+.family-image {
+    width: 80px; /* Adjust the size as needed */
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 10px;
+    object-fit: cover; /* Ensures the image maintains aspect ratio without distortion */
+}
+
+
+        /* Secret Part (Hidden Section) */
+        .secret-part {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .secret-part img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+        }
+
+          footer {
+  width: 100%;
+    background: #1e1e1e;
+    color: #a8a8a8;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    margin-top: auto;
+    border-top: 2px solid #3a6a47; /* Green border */
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+        /* Back and Reveal Secret Buttons */
+        .back-button, .reveal-secret-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            border-radius: 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button {
+            background-color: #39FF14;
+            color: black;
+        }
+
+        .back-button:hover {
+            background-color: #32cc13;
+        }
+
+        .reveal-secret-button {
+            background-color: #FFD700;
+            color: black;
+        }
+
+        .reveal-secret-button:hover {
+            background-color: #e5c000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+         <h1 class="marquee">MY FAMILY</h1>
+    </header>
+
+	<style>
+    .marquee {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scroll-left 10s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+
+
+    <!-- Navigation Bar -->
+   <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biodata.html">Biodata</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="family.html">Family</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+     </header>
+
+    <div class="family-tree">
+        <!-- Large Family Picture -->
+        <div class="family-picture">
+            <img src="family.jpg" alt="Family Picture">
+        </div>
+
+        <!-- Parent Nodes -->
+        <div class="parent-node">
+            <div class="tree-node">
+ <img src="mak.png" alt="Mak" class="family-image">
+                <p>Mak</p>
+                <p class="role">My Heaven</p> <!-- Role below the name -->
+            </div>
+            <div class="tree-node">
+<img src="abah.png" alt="Abah" class="family-image">
+                <p>Abah</p>
+                <p class="role">My Heaven</p> <!-- Role below the name -->
+            </div>
+        </div>
+
+        <!-- Sibling Nodes -->
+        <div class="siblings">
+            <div class="tree-node">
+<img src="no1.png" alt="no 1" class="family-image">
+                <p>Nurazua</p>
+                <p class="role">1st Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no2.png" alt="no 2" class="family-image">
+                <p>Che Syukri</p>
+                <p class="role">2nd Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no3.png" alt="no 3" class="family-image">
+                <p>Che Syahrizul</p>
+                <p class="role">3rd Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no4.png" alt="no 4" class="family-image">
+                <p>Manisah</p>
+                <p class="role">4th Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no5.png" alt="no 5" class="family-image">
+                <p>Che Syahriduan</p>
+                <p class="role">5th Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no6.png" alt="no 6" class="family-image">
+                <p>Siti Aisyah</p>
+                <p class="role">6th Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no7.png" alt="no 7" class="family-image">
+                <p>Nurul Huda</p>
+                <p class="role">7th Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no8.png" alt="no 8" class="family-image">
+                <p>Che Azharizal</p>
+                <p class="role">8th Child</p>
+            </div>
+            <div class="tree-node">
+<img src="no9.png" alt="no 9" class="family-image">
+                <p>Nurul Thaqifah</p>
+                <p class="role">9th Child</p>
+            </div>
+        </div>
+
+  <!-- Reveal Secret Button -->
+        <button class="reveal-secret-button" onclick="toggleSecret()">Reveal Secret</button>
+
+
+
+<!-- Hidden Secret Part -->
+        <div class="secret-part" id="secretPart">
+            <h2>Underweight Family</h2>
+            <img src="uw.jpg" alt="Underweight Family">
+            <p>We may have different blood, but we are family at heart. Luv</p>
+        </div>
+
+
+
+       
+    <!-- Footer -->
+	<footer>
+        <p>&copy; 2024 Rxzxl. All Rights Reserved.</p>
+    </footer>
+
+    <audio id="suprise" src="suprise.mp3" preload="auto"></audio>
+
+
+    <script>
+    // Toggle secret part visibility and play sound
+    function toggleSecret() {
+        const secretPart = document.getElementById('secretPart');
+        const audio = document.getElementById('suprise'); // Get the audio element
+        
+        // Toggle visibility of the secret part
+        secretPart.style.display = secretPart.style.display === 'block' ? 'none' : 'block';
+        
+        // Play the audio if it's not already playing
+        if (secretPart.style.display === 'block') {
+            if (audio.paused) {
+                audio.play().catch(function(error) {
+                    console.log("Audio playback failed:", error);
+                });
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>

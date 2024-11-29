@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Reset some default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h4 {
+      font-size: 32px;
+      color: #00e5e5; /* Neon turquoise */
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .message-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #2c2c2c;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Neon turquoise glow */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .robot-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .robot-container img {
+      width: 100px;
+      height: 100px;
+      margin-right: 15px;
+    }
+
+    .robot-container p {
+      color: #00e5e5;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .message-box {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    .message {
+      background-color: #444;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .message-user {
+      color: #00e5e5; /* Neon turquoise */
+    }
+
+    .message-anonymous {
+      color: #ffcc00;
+    }
+
+    .input-container {
+      display: flex;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .input-container input {
+      width: 60%;
+      padding: 10px;
+      background-color: #333;
+      color: #00e5e5;
+      border: 2px solid #00e5e5;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .input-container input[name="username"] {
+      width: 30%;
+    }
+
+    .input-container button {
+      padding: 10px 15px;
+      background-color: #00e5e5;
+      border: none;
+      color: #000;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .input-container button:hover {
+      background-color: #33cc33;
+    }
+
+    /* Go Back Button Styling */
+    .go-back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ffcc00;
+      color: #000;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .go-back-btn:hover {
+      background-color: #ff9900;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="message-container">
+    <!-- Robot Icon and Text -->
+    <div class="robot-container">
+      <img src="robot.png" alt="Robot">
+      <p>Hi there! Ask me anything...</p>
+    </div>
+
+    <h4><b>Message Me</b></h4>
+
+    <!-- Message Box -->
+    <div id="messageBox" class="message-box"></div>
+
+    <!-- Input Field for New Messages -->
+    <div class="input-container">
+      <input type="text" id="username" name="username" placeholder="Enter your name (Optional)" />
+      <input type="text" id="userMessage" placeholder="Ask your question..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- Go Back Button -->
+    <a href="index.html" class="go-back-btn">Go Back</a>
+  </div>
+
+  <script>
+    const messageBox = document.getElementById("messageBox");
+
+    // Function to add messages to the message box
+    function addMessage(content, sender, username) {
+      const messageElement = document.createElement("div");
+      messageElement.classList.add("message");
+
+      if (sender === "user") {
+        messageElement.classList.add("message-user");
+        messageElement.innerHTML = `<strong>${username || "Anonymous"}:</strong> ${content}`;
+      } else {
+        messageElement.classList.add("message-anonymous");
+        messageElement.innerHTML = `<strong>${username || "Anonymous"}:</strong> ${content}`;
+      }
+
+      messageBox.appendChild(messageElement);
+
+      // Scroll to the bottom of the message box to show the new message
+      messageBox.scrollTop = messageBox.scrollHeight;
+    }
+
+    // Function to send a new message
+    function sendMessage() {
+      const userMessage = document.getElementById("userMessage").value;
+      const username = document.getElementById("username").value.trim() || "Anonymous";
+
+      if (userMessage.trim() !== "") {
+        // Create a message object
+        const message = { content: userMessage, username: username, sender: "user" };
+
+        // Get current messages from localStorage
+        let messages = JSON.parse(localStorage.getItem("messages")) || [];
+
+        // Add the new message to the messages array
+        messages.push(message);
+
+        // Check if the number of messages exceeds 100 and remove the oldest message if so
+        if (messages.length > 100) {
+          messages.shift(); // Remove the oldest message
+        }
+
+        // Save the updated messages array back to localStorage
+        localStorage.setItem("messages", JSON.stringify(messages));
+
+        // Add the message to the chat box
+        addMessage(userMessage, "user", username);
+
+        // Clear the input fields
+        document.getElementById("userMessage").value = "";
+        document.getElementById("username").value = "";
+      }
+    }
+
+    // Load messages from localStorage when the page loads
+    window.onload = function() {
+      let messages = JSON.parse(localStorage.getItem("messages")) || [];
+
+      // Add all stored messages to the message box
+      messages.forEach(message => {
+        addMessage(message.content, message.sender, message.username);
+      });
+    };
+  </script>
+
+<div style="margin-top: 20px; text-align: center;">
+  <h2 style="font-size: 24px; color: #00e5e5;">Email Me</h2>
+  <p style="font-size: 16px; color: #fff;">You can reach out to me at <a href="mailto:cheijai99@gmail.com" style="color: #ffcc00; text-decoration: none;">cheijai99@gmail.com</a>.</p>
+</div>
+
+</body>
+</html>

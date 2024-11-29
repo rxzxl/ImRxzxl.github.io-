@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persona & Biodata Design</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212; /* Dark background */
+            color: #dcdcdc; /* Light text color */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #3a6a47, #4d3d29); /* Green and soft brown */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 10px;
+            background-color: #1e1e1e;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #dcdcdc;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #3a6a47; /* Highlight with theme color */
+            transform: scale(1.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            background: #1e1e1e; /* Dark container */
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            border-right: 1px solid #444;
+            padding-right: 30px;
+        }
+
+        .profile img {
+            border-radius: 70%;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .profile h2 {
+            color: Green;
+            font-size: 35px;
+            margin: 10px 0;
+        }
+
+        .profile p {
+            color: #a8a8a8;
+            font-size: 20px;
+        }
+
+        /* Details Section */
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            flex: 1 1 calc(50% - 20px); /* Responsiveness */
+            min-height: 200px; /* Ensures equal height */
+        }
+
+        .card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p, .card ul, .card ol {
+            color: #dcdcdc;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #444;
+            border-radius: 3px;
+            margin: 10px 0;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            background: #3a6a47; /* Green theme color */
+        }
+
+        /* Table Styling */
+        .table-container {
+            background: #1e1e1e; /* Table background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Arial', sans-serif;
+            color: #dcdcdc;
+        }
+
+        thead {
+            background-color: #3a6a47; /* Table header */
+        }
+
+        thead th {
+            font-size: 18px;
+            color: #ffffff;
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        tbody td {
+            border: 1px solid #444;
+            padding: 10px 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #1e1e1e;
+        }
+
+        tbody tr:hover {
+            background-color: #3a6a47;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+/* Marquee animation */
+@keyframes marqueeEffect {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marqueeEffect 10s linear infinite;
+}
+
+    </style>
+</head>
+<body>
+   <header>
+         <h1 class="marquee">BIODATA</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biodata.html">Biodata</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="family.html">Family</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="biodata.png">
+            <h2>CHE AZHARIZAL</h2>
+            <p>STUDENT INFORMATION MANAGEMENT</p>
+            <p>Age:20 </p>
+            <p>Location: Segamat,Johor</p>
+            <p>Status: Single</p>
+	<p style="color: #3a6a47; font-weight: bold;">
+    JUST BE HAPPY GUYS
+</p>
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2ZtbnIwNjF4cWM1ZG1jdGE0ejdzcjBqdnVhdWpwMjFlNjlhd2Y0YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMHxhOfscxPfIfm/giphy.gif" alt="Bunny GIF" style="width: 500px; height: auto; margin-top: 10px; border-radius: 10px;">
+
+        </div>
+
+
+
+        <!-- Details Section -->
+        <div class="details">
+            <div class="card">
+                <h3>Bio</h3>
+		<ul>
+                <li>My name is Rizal, a university student who’s passionate about learning and growing, both academically and spiritually. I believe true success isn’t just about personal achievements, but about finding balance between hard work and faith, while making a positive impact on those around me. I’m constantly striving to be the best version of myself and contribute meaningfully to my community.</li>
+ 	</ul>
+            </div>
+
+          <div class="card">
+    <h3>Goals</h3>
+    <ol>
+        <li>Embrace life with positivity, gratitude, and a peaceful heart.</li>
+        <li>Spread kindness and support, creating a joyful and compassionate environment.</li>
+        <li>Achieve success in both career and life while staying true to spiritual values, striving for eternal happiness.</li>
+    </ol>
+</div>
+
+
+            <div class="card">
+                <h3>Personality</h3>
+                <p>Introvert vs Extrovert</p>
+                <div class="progress-bar"><span style="width: 40%;"></span></div>
+                <p>Analytical vs Creative</p>
+                <div class="progress-bar"><span style="width: 70%;"></span></div>
+                <p>Passive vs Active</p>
+                <div class="progress-bar"><span style="width: 60%;"></span></div>
+            </div>
+
+            <div class="card">
+            <h3>Skills</h3
+            <p>Coding</p>
+            <div class="progress-bar"><span style="width: 50%;"></span></div>
+            <p>Communication</p>
+            <div class="progress-bar"><span style="width: 60%;"></span></div>
+            <p>Problem-Solving</p>
+            <div class="progress-bar"><span style="width: 70%;"></span></div>
+        </div>
+
+ <!-- Complex and Wide Table Section -->
+<div class="table-container">
+    <h3 style="text-align: center; color: #ffffff; font-size: 24px; margin-bottom: 20px;">Personal Favorites</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Details</th>
+                <th>Reason</th>
+                <th>Rating</th>
+                <th>Icon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Favourite Song</td>
+                <td>HIP - Mamamoo</td>
+                <td>Empowering and upbeat</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>🎵</td>
+            </tr>
+            <tr>
+                <td>Favourite Music Genre</td>
+                <td>Pop and R&B</td>
+                <td>Smooth and relaxing</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>🎼</td>
+            </tr>
+            <tr>
+                <td>Favourite Drama</td>
+                <td>
+                    <a href="https://assets.gadgets360cdn.com/pricee/assets/product/202409/The-Judge-from-Hell-poster_1725453974.jpg" target="_blank" style="text-decoration: none; color: #3a6a47; font-weight: bold;">
+                        The Judge From Hell
+                    </a>
+                </td>
+                <td>Intense and thrilling</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>📺</td>
+            </tr>
+            <tr>
+                <td>Dream</td>
+                <td>To Be Happy</td>
+                <td>Inner peace and joy</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>✨</td>
+            </tr>
+            <tr>
+                <td>Favourite Celebrity</td>
+                <td>Mamamoo</td>
+                <td>Talented and inspiring</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>🌟</td>
+            </tr>
+            <tr>
+                <td>Favourite Colour</td>
+                <td>Emerald Green</td>
+                <td>Refreshing and vibrant</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>🟢</td>
+            </tr>
+            <tr>
+                <td>Hobby</td>
+                <td>Baking</td>
+                <td>Creative and delicious</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>🍰</td>
+            </tr>
+            <tr>
+                <td>Favourite Quotes</td>
+                <td>I live for myself, not for anyone else.</td>
+                <td>Empowering and bold</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>💬</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <h2></h2>
+    <a href="#top">Back to Top</a>
+
+ 
+       
+  
+</body>
+</html>
+

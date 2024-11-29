@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUCATION JOURNEY</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212; /* Dark background */
+            color: #dcdcdc; /* Light text color */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        header {
+            background: linear-gradient(135deg, #3a6a47, #4d3d29); /* Green and soft brown */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav {
+            background: #121212;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 10px;
+            background-color: #1e1e1e;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #dcdcdc;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00c6ff;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+
+        .content p, .content ul {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 10px 0;
+            color: white;
+        }
+
+        .content ul {
+            list-style: disc;
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        .content audio {
+            margin-top: 20px;
+            width: 80%;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .achievements {
+            margin-top: 20px;
+            background: #fffbec;
+            border-left: 5px solid #fbc02d;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 100%;
+        }
+
+        .achievements h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #f57f17;
+            margin-bottom: 10px;
+        }
+
+        .achievements ul {
+    font-size: 1.1rem;
+    margin-left: 20px;
+    list-style: none; /* Hilangkan bullet default */
+    color: #444;
+    padding: 0;
+}
+
+.achievements ul li::before {
+    content: '🥇'; /* Ikon medali emas */
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+        .controls {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .controls button {
+            background: #4caf50;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s ease-in-out;
+        }
+
+        .controls button:hover {
+            background: #388e3c;
+            transform: scale(1.05);
+        }
+
+        .controls button:disabled {
+            background: #c8e6c9;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background: #1e1e1e;
+            color: #a8a8a8;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            margin-top: auto;
+            border-top: 2px solid #3a6a47; /* Green border */
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            font-size: 0.9em;
+        }
+
+        footer p:hover {
+            color: #00c6ff;
+        }
+    </style>
+</head>
+<body>
+     <header>
+         <h1 class="marquee">EDUCATION</h1>
+    </header>
+
+	<style>
+    .marquee {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scroll-left 10s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biodata.html">Biodata</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="family.html">Family</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="content" id="page-content"></div>
+        <div class="achievements" id="achievement-section">
+            <h3>🏆Achievements</h3>
+            <ul id="achievement-list"></ul>
+        </div>
+        <div class="controls">
+            <button id="prev-btn" disabled>⬅ Previous</button>
+            <button id="next-btn">Next ➡</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+	<footer>
+        <p>&copy; 2024 Rxzxl. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const pages = [
+           {
+            title: "University Education",
+            content: `
+                <p><strong>University:</strong> Universiti Teknologi MARA Kampus Segamat</p>
+                <p><strong>Program:</strong> Information Management</p>
+                <p><strong>Semester:</strong> Semester 5</p>
+                <audio controls>
+                    <source src="university.mp3" type="audio/mp3">
+                    Your browser does not support the audio tag.
+                </audio>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.052481751456!2d102.72714!3d2.4895800000000037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ce2c10f7613931%3A0xd94142e4f385ca09!2sUiTM%20Segamat!5e0!3m2!1sms!2smy!4v1732362946221!5m2!1sms!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            `,
+            achievements: ["No achievement😞"]
+        },
+        {
+            title: "High School Education",
+            content: `
+                <p><strong>School:</strong> SMK LKTP SERTIK</p>
+                <p><strong>Stream:</strong> Commerce Stream</p>
+                <p><strong>Year:</strong> 2016 - 2020</p>
+                <audio controls>
+                    <source src="highschool.mp3" type="audio/mp3">
+                    Your browser does not support the audio tag.
+                </audio>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.40954167431!2d102.0324249!3d3.4922201000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc1d25eadb3f55%3A0xd1c8442226d0ab76!2sSekolah%20Menengah%20Kebangsaan%20(Lktp)%20Kampung%20Sertik!5e0!3m2!1sms!2smy!4v1732363084119!5m2!1sms!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            `,
+            achievements: [
+                "Head Prefect",
+		"Class Leader",
+		"Member of the School Cooperative Committee",
+                "President of the Volleyball Sports Club",
+                "President of the Malaysian Red Crescent Society (PBSM)",
+                "President of the Mathematics and Science Club",
+                "Exemplary Student Award"
+            ]
+        },
+        {
+            title: "Primary School Education",
+            content: `
+                <p><strong>School:</strong> SK MEMPAGA 02</p>
+                <p><strong>Years:</strong> 2010 - 2016</p>
+                <audio controls>
+                    <source src="primaryschool.mp3" type="audio/mp3">
+                    Your browser does not support the audio tag.
+                </audio>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.181722287271!2d101.9555135!3d3.5455232000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc045fb1e99eb9%3A0xa6c81e4993afdbea!2sSekolah%20Kebangsaan%20(Lktp)%20Mempaga%202!5e0!3m2!1sms!2smy!4v1732363123751!5m2!1sms!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            `,
+            achievements: ["Head Prefect", "President of the Environmental Conservation Club","Treasurer of the Malaysian Red Crescent Society (PBSM)","Treasurer of the Mathematics and Science Club","Treasurer of the Badminton Sports Club","Peer Mentoring Leader","Student of the Year Award", "Head of the Green Sport Club"]
+        }
+    ];
+
+        let currentPage = 0;
+
+        const loadPage = () => {
+            const page = pages[currentPage];
+            document.getElementById("page-content").innerHTML = `
+                <h2>${page.title}</h2>
+                ${page.content}
+            `;
+            const achievementsList = document.getElementById("achievement-list");
+            achievementsList.innerHTML = page.achievements
+                .map((achievement) => `<li>${achievement}</li>`)
+                .join("");
+            document.getElementById("prev-btn").disabled = currentPage === 0;
+            document.getElementById("next-btn").disabled = currentPage === pages.length - 1;
+        };
+
+        document.getElementById("prev-btn").addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                loadPage();
+            }
+        });
+
+        document.getElementById("next-btn").addEventListener("click", () => {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                loadPage();
+            }
+        });
+
+        loadPage();
+    </script>
+</body>
+</html>
