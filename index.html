@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rxzxl Profile | Personal Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Flash Welcome Screen */
+        #flash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        #flash-text {
+            font-size: 50px;
+            font-weight: bold;
+            color: #FFD700; /* Gold color for the welcome text */
+            animation: flashEffect 2s linear forwards;
+        }
+
+        @keyframes flashEffect {
+            0% {
+                opacity: 0;
+                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700, 0 0 50px #FFD700;
+            }
+            100% {
+                opacity: 0;
+                text-shadow: 0 0 10px #FFD700;
+            }
+        }
+
+        /* Main content hidden initially */
+        #main-content {
+            display: none;
+        }
+
+        /* Header */
+        header {
+            background: #0d0d0d;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #00ff99;
+            font-size: 2em;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #bfbfbf;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00ff99;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 20px;
+            color: #fff;
+            min-height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-text {
+            max-width: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 3em;
+            color: #00ff99;
+            text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 30px #00ff99;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.2em;
+            color: #bfbfbf;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-buttons a {
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #0d0d0d;
+            background-color: #00ff99;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .hero-buttons a:hover {
+            background-color: #00d4ff;
+        }
+
+        /* Footer */
+        footer {
+            background: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .clock {
+            font-size: 1.2em;
+            color: #00ff99;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-text h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Flash welcome screen -->
+    <div id="flash-screen">
+        <div id="flash-text">Welcome Buddies</div>
+    </div>
+
+    <!-- Main website content -->
+    <div id="main-content">
+        <header>
+            <h1>Rxzxl Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="biodata.html">Biodata</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="family.html">Family</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <video autoplay loop muted>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-text">
+                <h2>Rxzxl Digital World</h2>
+                <p>This website is not just a portfolio—it's a glimpse into my journey, where every project tells a story of growth, challenges, and success. Explore my work, skills, and the milestones I've achieved to understand the drive behind every endeavor.</p>
+                <div class="hero-buttons">
+                    <a href="portfolio.html">Ask Me</a>
+                    <a href="contact.html">Contact Me</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Rxzxl. All Rights Reserved.</p>
+            <div class="clock" id="clock"></div>
+        </footer>
+    </div>
+
+    <script>
+        // Check if the user has already seen the welcome screen for the current session
+        if (!sessionStorage.getItem("welcomeShown")) {
+            document.getElementById("flash-screen").style.display = "flex";
+            sessionStorage.setItem("welcomeShown", "true");
+        } else {
+            document.getElementById("flash-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        }
+
+        // Remove flash screen after animation and show main content
+        document.getElementById("flash-text").addEventListener("animationend", function() {
+            document.getElementById("flash-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        });
+
+        // JavaScript function to update the clock every second
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const time = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = time;
+        }
+
+        // Update the clock immediately, then every second
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
