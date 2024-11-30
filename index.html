@@ -38,26 +38,26 @@
             overflow: hidden;
         }
 
-        #flash-text {
+               #flash-text {
             font-size: 50px;
             font-weight: bold;
-            color: #FFD700; /* Gold color for the welcome text */
+            color: #00ff99; /* Gold color for the welcome text */
             animation: flashEffect 2s linear forwards;
         }
 
         @keyframes flashEffect {
-            0% {
-                opacity: 0;
-                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
-            }
-            50% {
-                opacity: 1;
-                text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700, 0 0 50px #FFD700;
-            }
-            100% {
-                opacity: 0;
-                text-shadow: 0 0 10px #FFD700;
-            }
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 30px #00ff99;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 20px #00ff99, 0 0 30px #00ff99, 0 0 40px #00ff99, 0 0 50px #00ff99;
+    } 
+    100% {
+        opacity: 0;
+        text-shadow: 0 0 10px #00ff99;
+    }
         }
 
         /* Main content hidden initially */
